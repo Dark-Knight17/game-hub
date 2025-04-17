@@ -1,9 +1,7 @@
-import { Button, Grid, GridItem } from "@chakra-ui/react";
-import { useColorMode } from "@/components/ui/color-mode";
+import {  Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 
 function App() {
-  const { toggleColorMode } = useColorMode();
   return (
     <Grid
       templateAreas={{
@@ -13,19 +11,15 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar />
-        <Button variant="outline" onClick={toggleColorMode}>
-          Toggle Mode
-        </Button>
       </GridItem>
       <GridItem
         area="aside"
-        bg="tomato"
         display={{ base: "none", lg: "block" }}
       >
         Aside
       </GridItem>
 
-      <GridItem area="main" bg="dodgerblue">
+      <GridItem area="main">
         Main
       </GridItem>
     </Grid>

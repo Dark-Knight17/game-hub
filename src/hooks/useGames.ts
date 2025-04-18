@@ -8,6 +8,8 @@ export interface Platform{
     slug: string;
 }
 
+
+
 export interface Game{
     id: number;
     name: string;

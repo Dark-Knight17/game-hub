@@ -29,7 +29,6 @@ const PlatformIconList = ({ platforms }: PlatformIconListProps) => {
     nintendo: SiNintendo,
     web: BsGlobe,
   };
-  console.log(platforms.map((platform) => platform.slug));
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => {

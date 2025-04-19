@@ -8,6 +8,7 @@ import {
   Button,
   Flex,
   Text,
+  Heading,
 } from "@chakra-ui/react";
 
 interface GenreListProps {
@@ -20,29 +21,33 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <List.Root variant="plain">
-      {data.map((genre) => (
-        <List.Item key={genre.id} marginY="8px">
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Button
-              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
-              onClick={() => onSelectGenre(genre)}
-              fontSize="lg"
-              variant="ghost"
-            >
-              <Flex maxW="100px">
-                <Text truncate>{genre.name}</Text>
-              </Flex>
-            </Button>
-          </HStack>
-        </List.Item>
-      ))}
-    </List.Root>
+    <>
+      <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
+      <List.Root variant="plain">
+        {data.map((genre) => (
+          <List.Item key={genre.id} marginY="6px">
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Button
+                fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
+                onClick={() => onSelectGenre(genre)}
+                fontSize="lg"
+                variant="ghost"
+              >
+                <Flex maxW="100px">
+                  <Text truncate>{genre.name}</Text>
+                </Flex>
+              </Button>
+            </HStack>
+          </List.Item>
+        ))}
+      </List.Root>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ const SortSelector = ({selectedSort} : SortSelectorProps) => {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" focusRing="none">
           <Text fontWeight="bold">Order by:{selectedSort || "Relevance"}</Text>
           <BsChevronDown />
         </Button>

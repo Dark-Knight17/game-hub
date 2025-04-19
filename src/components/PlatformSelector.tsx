@@ -18,7 +18,7 @@ const PlatformSelector = ({
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" focusRing="none">
           <Text fontWeight="bold">{selectedPlatform?.name || "Platforms"}</Text>
           <BsChevronDown />
         </Button>

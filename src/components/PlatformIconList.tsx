@@ -10,30 +10,34 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { Platform } from "../hooks/useGames";
-import { HStack, Icon} from "@chakra-ui/react";
-import { JSX } from "react";
+import { HStack, Icon } from "@chakra-ui/react";
+import {IconType } from "react-icons";
 
 interface PlatformIconListProps {
   platforms: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: PlatformIconListProps) => {
-  const iconMap: { [key: string]: JSX.Element } = {
-    pc: <FaWindows />,
-    playstation: <FaPlaystation />,
-    xbox: <FaXbox />,
-    ios: <MdPhoneIphone />,
-    android: <FaAndroid />,
-    linux: <FaLinux />,
-    mac: <FaApple />,
-    nintendo: <SiNintendo />,
-    web: <BsGlobe />,
+  const iconMap: { [key: string]: IconType } = {
+    pc: FaWindows,
+    playstation: FaPlaystation,
+    xbox: FaXbox,
+    ios: MdPhoneIphone,
+    android: FaAndroid,
+    linux: FaLinux,
+    mac: FaApple,
+    nintendo: SiNintendo,
+    web: BsGlobe,
   };
+  console.log(platforms.map((platform) => platform.slug));
   return (
     <HStack marginY={1}>
-      {platforms.map((platform) => (
-        <Icon key={platform.id} color="tomato">{iconMap[platform.slug]}</Icon>
-      ))}
+      {platforms.map((platform) => {
+        const IconComponent = iconMap[platform.slug];
+        if (!IconComponent) return null;
+        return <Icon key={platform.id} as={iconMap[platform.slug]} color="tomato" />
+      } 
+      )}
     </HStack>
   );
 };

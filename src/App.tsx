@@ -65,13 +65,14 @@ function App() {
         area="aside"
         display={{ base: "none", lg: "block" }}
         paddingX={5}
+        marginTop={3}
       >
         <GenreList
           onSelectGenre={handleSelectGenre}
           selectedGenre={gameQuery.genre}
         />
       </GridItem>
-      <GridItem area="main">
+      <GridItem area="main" marginTop={6}>
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery} />
           <HStack marginBottom={5}>

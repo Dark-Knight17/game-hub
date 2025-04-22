@@ -9,9 +9,9 @@ import { FetchResponse } from '@/services/api-client'
 const usePlatforms = () => {
     return useQuery({
         queryKey: ["platforms"],
-        queryFn: () => apiClient.get<FetchResponse<Platform>>("/platforms/lists/parents").then(res => res.data.results),
+        queryFn: () => apiClient.get<FetchResponse<Platform>>("/platforms/lists/parents").then(res => res.data),
         staleTime: 24 * 60 *60 * 1000, //24hrs
-        initialData: platforms
+        initialData: {count: platforms.length, results: platforms}
     })
 }
 

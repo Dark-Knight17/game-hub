@@ -12,12 +12,12 @@ export interface Genre{
 
 
 const useGenres = () => {
-    return useQuery<Genre[], Error>(
+    return useQuery<FetchResponse<Genre>, Error>(
         {
             queryKey: ['genres'],
-            queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then(res => res.data.results),
+            queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then(res => res.data),
             staleTime: 24 * 60 * 60 * 1000, // 24 hrs
-            initialData: genres
+            initialData: {count: genres.length, results: genres}
         }
     )
 }

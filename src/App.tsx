@@ -65,7 +65,7 @@ function App() {
         area="aside"
         display={{ base: "none", lg: "block" }}
         paddingX={5}
-        marginTop={3}
+        marginTop={16}
       >
         <GenreList
           onSelectGenre={handleSelectGenre}

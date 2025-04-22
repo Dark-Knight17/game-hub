@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import platforms from '../data/platforms'
 import apiClient from '@/services/api-client'
 import { Platform } from './useGames'
-import { FetchResponse } from './UseData'
+import { FetchResponse } from '@/services/api-client'
 
 
 

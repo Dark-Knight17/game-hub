@@ -1,4 +1,4 @@
-import useGenres, { Genre } from "@/hooks/useGenre";
+import useGenres, { Genre } from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
 import {
   HStack,
@@ -16,15 +16,17 @@ interface GenreListProps {
   selectedGenre: Genre | null;
 }
 const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
-  const { data, isLoading, error } = useGenres();
+  const { data, error, isLoading } = useGenres();
 
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
     <>
-      <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
       <List.Root variant="plain">
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <List.Item key={genre.id} marginY="6px">
             <HStack>
               <Image

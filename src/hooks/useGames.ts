@@ -3,14 +3,10 @@ import { FetchResponse } from "@/services/api-client";
 import { Genre } from "./useGenres";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "@/services/api-client";
+import { Platform } from "./usePlatforms";
 
 
-export interface Platform{
-    id: number;
-    name: string;
-    slug: string;
-    
-}
+
 
 
 

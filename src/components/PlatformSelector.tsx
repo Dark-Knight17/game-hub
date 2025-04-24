@@ -1,3 +1,4 @@
+import usePlatform from "@/hooks/usePlatform";
 import usePlatforms from "@/hooks/usePlatforms";
 import { Button, Menu, Portal, Text } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
@@ -13,7 +14,7 @@ const PlatformSelector = ({
   selectedPlatformId
 }: PlatformSelectorProps) => {
   const { data, error } = usePlatforms();
-  selectedPlatformName = data?.results.find((platform) => platform.id === selectedPlatformId)?.name || "";
+  selectedPlatformName = usePlatform(selectedPlatformId)?.name || "";
   if (error) return null;
   return (
     <Menu.Root>

@@ -1,10 +1,9 @@
-import { GameQuery } from "@/App";
-import { FetchResponse } from "@/services/api-client";
-import { Genre } from "./useGenres";
-import { useInfiniteQuery} from "@tanstack/react-query";
-import APIClient from "@/services/api-client";
-import { Platform } from "./usePlatforms";
+import APIClient, { FetchResponse } from "@/services/api-client";
+import useGameQueryStore from "@/store";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from 'ms';
+import { Genre } from "./useGenres";
+import { Platform } from "./usePlatforms";
 
 
 const apiClient = new APIClient<Game>("games");
@@ -20,7 +19,9 @@ export interface Game{
     rating_top: number;
 }
 
-const useGames = (gameQuery: GameQuery) => useInfiniteQuery<FetchResponse<Game>,Error>({
+const useGames = () => { 
+    const gameQuery = useGameQueryStore((s) => s.gameQuery);
+    return useInfiniteQuery<FetchResponse<Game>,Error>({
     queryKey:gameQuery ? ["games",gameQuery] : ["games"],
     queryFn: ({pageParam}) => apiClient.getAll({
         params:{
@@ -36,7 +37,7 @@ const useGames = (gameQuery: GameQuery) => useInfiniteQuery<FetchResponse<Game>,
         return lastPage.next  ? allPages.length + 1 : undefined
     },
     staleTime: ms('24 hrs')
-})
+}) }
     
 
 

@@ -7,9 +7,7 @@ import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
-  
-  const { data, error, isLoading, fetchNextPage, hasNextPage } =
-    useGames();
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames();
 
   const skeletons = [1, 2, 3, 4, 5, 6];
   if (error) return <Text>{error.message}</Text>;
@@ -37,9 +35,7 @@ const GameGrid = () => {
         {data?.pages.map((page, index) =>
           page.results.map((game) => (
             <React.Fragment key={index}>
-              <GameCardContainer key={game.id}>
-                <GameCard key={game.id} game={game} />
-              </GameCardContainer>
+              <GameCard key={game.id} game={game} />
             </React.Fragment>
           ))
         )}

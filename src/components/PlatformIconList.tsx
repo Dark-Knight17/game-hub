@@ -9,9 +9,9 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { Platform } from "../hooks/usePlatforms";
+import { Platform } from "@/entities/Platform";
 import { HStack, Icon } from "@chakra-ui/react";
-import {IconType } from "react-icons";
+import { IconType } from "react-icons";
 
 interface PlatformIconListProps {
   platforms: Platform[];
@@ -34,9 +34,10 @@ const PlatformIconList = ({ platforms }: PlatformIconListProps) => {
       {platforms.map((platform) => {
         const IconComponent = iconMap[platform.slug];
         if (!IconComponent) return null;
-        return <Icon key={platform.id} as={iconMap[platform.slug]} color="tomato" />
-      } 
-      )}
+        return (
+          <Icon key={platform.id} as={iconMap[platform.slug]} color="tomato" />
+        );
+      })}
     </HStack>
   );
 };

@@ -5,9 +5,9 @@ import { Game } from "../entities/Game";
 
 const apiClient = new APIClient<Game>("/games");
 
-const useGame = (slug:string) => useQuery<Game>({
-    queryKey: ['game',slug],
-    queryFn: () => apiClient.get(slug)
+const useGame = (id:string | number) => useQuery<Game>({
+    queryKey: ['game',id],
+    queryFn: () => apiClient.get(id)
 })
 
 export default useGame;

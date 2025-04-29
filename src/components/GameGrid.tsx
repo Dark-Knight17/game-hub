@@ -32,13 +32,13 @@ const GameGrid = () => {
             </GameCardContainer>
           ))}
 
-        {data?.pages.map((page, index) =>
-          page.results.map((game) => (
-            <React.Fragment key={index}>
+        {data?.pages.map((page, index) => (
+          <React.Fragment key={index}>
+            {page.results.map((game) => (
               <GameCard key={game.id} game={game} />
-            </React.Fragment>
-          ))
-        )}
+            ))}
+          </React.Fragment>
+        ))}
       </SimpleGrid>
     </InfiniteScroll>
   );
